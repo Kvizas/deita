@@ -1,0 +1,17 @@
+@use "../../sass/abstracts/_variables" as *
+
+.btn
+    width: fit-content
+    color: #fff
+    background: $primary-color
+    border-radius: 15px
+    padding: 12px 20px
+    cursor: pointer
+    transition: transform .3s, opacity .3s
+    user-select: none
+    margin: 8px 0
+    box-sizing: border-box
+
+    &:active
+        transform: translateY(1px)
+        opacity: .9

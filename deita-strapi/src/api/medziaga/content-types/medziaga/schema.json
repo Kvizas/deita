@@ -1,0 +1,49 @@
+{
+  "kind": "collectionType",
+  "collectionName": "medziagas",
+  "info": {
+    "singularName": "medziaga",
+    "pluralName": "medziagas",
+    "displayName": "Medžiaga",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Pavadinimas": {
+      "type": "string",
+      "required": true,
+      "maxLength": 80
+    },
+    "Aprasymas": {
+      "type": "richtext"
+    },
+    "Failas": {
+      "type": "media",
+      "multiple": true,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "videos",
+        "files"
+      ]
+    },
+    "Kategorija": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::kategorija.kategorija",
+      "inversedBy": "Medziaga"
+    },
+    "Metatekstas": {
+      "type": "text"
+    },
+    "Disciplina": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::disciplina.disciplina",
+      "inversedBy": "Medziagos"
+    }
+  }
+}

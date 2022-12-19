@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_sprendimai_zingsnis",
+  "info": {
+    "displayName": "Žingsnis",
+    "icon": "subscript",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "Turinys": {
+      "type": "richtext"
+    }
+  }
+}

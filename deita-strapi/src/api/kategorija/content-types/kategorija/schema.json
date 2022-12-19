@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "kategorijos",
+  "info": {
+    "singularName": "kategorija",
+    "pluralName": "kategorijos",
+    "displayName": "Kategorijos",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Pavadinimas": {
+      "type": "string",
+      "maxLength": 64,
+      "required": true
+    },
+    "Medziaga": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::medziaga.medziaga",
+      "mappedBy": "Kategorija"
+    }
+  }
+}

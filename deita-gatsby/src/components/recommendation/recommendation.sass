@@ -1,0 +1,49 @@
+@use "../../sass/abstracts/_placeholders"
+@use "../contextual-section/contextual-section"
+@use "../../sass/abstracts/_variables" as *
+
+.recom
+    width: unset
+    padding: unset
+    background: white
+    z-index: 2
+
+    h2
+        text-align: center
+
+    &__container
+        @extend %section
+        @extend %flex-center
+        position: relative
+        background: white
+        padding: min(50px, 5vw) 7vw
+        box-sizing: border-box
+        margin: auto
+
+        @media (max-width: 950px)
+            padding: min(50px, 5vw) 0
+            width: 100vw
+
+    &__side
+        position: absolute
+        top: 0
+        bottom: 0
+        margin: auto
+
+        &__wrapper
+            width: 100%
+            background-size: cover!important
+
+        &--left
+            left: 0
+            transform: translateX(-70%)
+
+        &--right
+            right: 0
+            transform: translateX(70%)
+
+    &__img
+        position: absolute!important
+        right: 0
+        bottom: 0
+        transform: translateX(45%) translateY(20%)

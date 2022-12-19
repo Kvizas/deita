@@ -1,0 +1,44 @@
+{
+  "kind": "collectionType",
+  "collectionName": "knygas",
+  "info": {
+    "singularName": "knyga",
+    "pluralName": "knygas",
+    "displayName": "Knyga",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Pavadinimas": {
+      "type": "string",
+      "required": true,
+      "maxLength": 80,
+      "unique": true
+    },
+    "Paveikslelis": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "Sprendimai": {
+      "displayName": "Sprendimas",
+      "type": "component",
+      "repeatable": true,
+      "component": "sprendimai.sprendimas"
+    },
+    "Slug": {
+      "type": "uid",
+      "targetField": "Pavadinimas",
+      "required": true
+    }
+  }
+}

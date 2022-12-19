@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_sprendimai_sprendimas",
+  "info": {
+    "displayName": "Sprendimas",
+    "icon": "file-contract",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "Pavadinimas": {
+      "type": "string",
+      "required": true,
+      "maxLength": 80,
+      "unique": false
+    },
+    "Skyrius": {
+      "type": "string"
+    },
+    "Zingsniai": {
+      "type": "component",
+      "repeatable": true,
+      "component": "sprendimai.zingsnis"
+    }
+  }
+}

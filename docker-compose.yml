@@ -1,0 +1,47 @@
+version: "3.7"
+
+services:
+  meilisearch:
+    image: getmeili/meilisearch
+    ports:
+      - 7700:7700
+    volumes:
+      - ./meilisearch/:/meili_data
+  tika:
+    image: apache/tika
+    ports:
+      - 9998:9998
+    working_dir: /tika/
+    volumes:
+      - ./tika/:/tika/
+  gatsby:
+    image: gatsbyjs/gatsby
+    ports:
+      - 80:80
+    working_dir: /pub/
+    volumes:
+      - ./deita-gatsby/public/:/pub/
+  mariadb:
+    image: mariadb
+    ports:
+      - 3307:3306
+    volumes:
+      - ./mariadb/data/:/var/lib/mysql
+    env_file:
+      - docker.env
+  strapi:
+    build: ./deita-strapi/
+    image: deita:latest
+    restart: unless-stopped
+    env_file: ./deita-strapi/.env
+    volumes:
+      - ./deita-strapi/config:/opt/app/config
+      - ./deita-strapi/src:/opt/app/src
+      - ./deita-strapi/package.json:/opt/package.json
+      - ./deita-strapi/yarn.lock:/opt/yarn.lock
+      - ./deita-strapi/.env:/opt/app/.env
+      - ./deita-strapi/public/uploads:/opt/app/public/uploads
+    ports:
+      - '1337:1337'
+    depends_on:
+      - mariadb

@@ -1,0 +1,35 @@
+{
+  "kind": "collectionType",
+  "collectionName": "disciplinas",
+  "info": {
+    "singularName": "disciplina",
+    "pluralName": "disciplinas",
+    "displayName": "Disciplina",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Pavadinimas": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "Ikona": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "Medziagos": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::medziaga.medziaga",
+      "mappedBy": "Disciplina"
+    }
+  }
+}

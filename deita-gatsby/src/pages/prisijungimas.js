@@ -14,7 +14,7 @@ export default function Prisijungimas() {
     const emailRef = useRef();
     const passwordRef = useRef();
 
-    const [, , , login] = useContext(UserContext)
+    const {login} = useContext(UserContext)
 
     const submit = () => {
 

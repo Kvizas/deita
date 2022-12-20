@@ -1,4 +1,5 @@
 @use "../../sass/abstracts/_placeholders"
+@use "../../sass/abstracts/_variables" as *
 
 .profile-card
     @extend %card
@@ -12,3 +13,14 @@
         height: 128px
         border-radius: 100%
         background: #a4a4a4
+
+    &__role
+        background: $secondary-color
+        color: white
+        padding: 10px 20px
+        border-radius: 8px
+        text-align: center
+        margin-top: 12px
+
+        &--free
+            background: $primary-color

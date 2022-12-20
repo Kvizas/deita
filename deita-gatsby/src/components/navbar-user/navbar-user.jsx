@@ -10,7 +10,7 @@ import "./navbar-user.sass";
 
 export default function NavbarUser() {
 
-    const [user, isLoading] = useContext(UserContext);
+    const {user, isLoading} = useContext(UserContext);
 
     if (user !== undefined && isLoading === false)
         return (

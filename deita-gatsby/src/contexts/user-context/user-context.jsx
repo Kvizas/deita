@@ -75,7 +75,7 @@ export default function UserContextProvider({ children }) {
     }
 
     return (
-        <UserContext.Provider value={[user, isLoading, update, login, register]}>
+        <UserContext.Provider value={{user, isLoading, update, login, register}}>
             {children}
         </UserContext.Provider>
     )

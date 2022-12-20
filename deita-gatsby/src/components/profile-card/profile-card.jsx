@@ -13,7 +13,6 @@ export default function ProfileCard() {
     <div className='profile-card'>
         <div className='profile-card__img'></div>
         <Heading style={{textAlign: "center", marginBottom: "0"}} styleLevel={5} level={3}>{user.username}</Heading>
-        <Subtext>{user.email}</Subtext>
     </div>
   )
 }

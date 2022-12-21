@@ -99,8 +99,6 @@ export default function SearchbarInstant({ disableList, search_query = "", small
     return sass.searchbar__list + (focused ? ' active' : '')
   }
 
-  console.log(results);
-
   return (
     <>
     <div

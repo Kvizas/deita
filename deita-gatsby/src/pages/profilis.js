@@ -1,6 +1,6 @@
 import React from 'react'
-import Footer from '../components/footer/footer'
 import Navbar from '../components/navbar/navbar'
+import Footer from '../components/footer/footer'
 import ProfileCard from '../components/profile-card/profile-card.jsx'
 import ProfileData from '../components/profile-data/profile-data'
 

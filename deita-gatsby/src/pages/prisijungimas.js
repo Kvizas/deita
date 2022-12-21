@@ -4,7 +4,7 @@ import Footer from '../components/footer/footer'
 import AuthBox from '../components/auth-box/auth-box'
 import Heading from '../components/heading/heading';
 import Button from '../components/button/button';
-import { useState } from 'react';
+
 import { useContext } from 'react';
 import { UserContext } from '../contexts/user-context/user-context';
 import { useRef } from 'react';
@@ -14,7 +14,7 @@ export default function Prisijungimas() {
     const emailRef = useRef();
     const passwordRef = useRef();
 
-    const {login} = useContext(UserContext)
+    const { login } = useContext(UserContext)
 
     const submit = () => {
 

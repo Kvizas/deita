@@ -2,8 +2,8 @@ import * as React from "react"
 import Navbar from '../../components/navbar/navbar'
 import Footer from '../../components/footer/footer'
 import BookHeader from '../../components/book-header/book-header'
-import { graphql } from 'gatsby'
 import BookBrowser from "../../components/book-browser/book-browser"
+import { graphql } from 'gatsby'
 
 export default function Book({ data }) {
 

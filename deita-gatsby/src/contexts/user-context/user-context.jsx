@@ -1,3 +1,4 @@
+import { useStaticQuery } from "gatsby";
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
@@ -52,6 +53,14 @@ export default function UserContextProvider({ children }) {
 
 
     const login = (identifier, password) => {
+
+        const data = useStaticQuery(graphql`
+            query {
+                strapi {
+                    
+                }
+            }
+        `)
 
         httpPost(process.env.STRAPI_API_URL + '/api/auth/local', {
             identifier,

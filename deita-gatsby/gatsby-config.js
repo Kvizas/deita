@@ -49,16 +49,16 @@ module.exports = {
       },
       __key: "pages"
     },
-    // {
-    //   resolve: "gatsby-source-graphql",
-    //   options: {
-    //     // Arbitrary name for the remote schema Query type
-    //     typeName: "STRAPI",
-    //     // Field under which the remote schema will be accessible. You'll use this in your Gatsby query
-    //     fieldName: "strapi",
-    //     // Url to query from
-    //     url: "http://0.0.0.0:1337/graphql",
-    //   },
-    // }
+    {
+      resolve: "gatsby-source-graphql",
+      options: {
+        // Arbitrary name for the remote schema Query type
+        typeName: "STRAPI",
+        // Field under which the remote schema will be accessible. You'll use this in your Gatsby query
+        fieldName: "strapi",
+        // Url to query from
+        url: "http://0.0.0.0:1337/graphql",
+      },
+    }
   ]
 };

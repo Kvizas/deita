@@ -24,7 +24,7 @@ export default function SearchbarInstant({ disableList, search_query, small, tra
 
   const [, setSectionData] = useContext(SectionContext);
   const index = useContext(MeilisearchContext);
-
+  search_query = search_query === undefined ? "" : search_query;
   const [value, setValue] = useState(search_query);
   const [focused, setFocused] = useState(false);
   const [results, setResults] = useState([]);
@@ -100,6 +100,8 @@ export default function SearchbarInstant({ disableList, search_query, small, tra
     return sass.searchbar__list + (focused ? ' active' : '')
   }
 
+  console.log(results);
+
   return (
     <>
     <div
@@ -108,7 +110,7 @@ export default function SearchbarInstant({ disableList, search_query, small, tra
     >
       <div style={{bottom: calcListBottomLength()}} ref={list_el} className={getListClass()}>
         {focused && !disableList ? 
-          results.map(hit => <SearchbarItem key={hit.id} title={hit.Pavadinimas} source="DEITA konspektai" img_src={PdfSvg}/>)
+          results.map(hit => <SearchbarItem key={hit.id} title={hit.Pavadinimas} source={"DEITA " + hit.Kategorija.Pavadinimas} img_src={PdfSvg}/>)
           :
           <></>
         }

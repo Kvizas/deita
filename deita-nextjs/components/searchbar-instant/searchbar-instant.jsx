@@ -18,13 +18,12 @@ import accessibleOnClick from '../../functions/accessibility';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 
-export default function SearchbarInstant({ disableList, search_query, small, transform }) {
+export default function SearchbarInstant({ disableList, search_query = "", small, transform }) {
 
   const router = useRouter();
 
   const [, setSectionData] = useContext(SectionContext);
   const index = useContext(MeilisearchContext);
-  search_query = search_query === undefined ? "" : search_query;
   const [value, setValue] = useState(search_query);
   const [focused, setFocused] = useState(false);
   const [results, setResults] = useState([]);

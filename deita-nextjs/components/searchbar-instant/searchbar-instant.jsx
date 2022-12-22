@@ -21,7 +21,7 @@ import { useRouter } from 'next/router';
 export default function SearchbarInstant({ disableList, search_query = "", small, transform }) {
 
   const router = useRouter();
-
+  
   const [, setSectionData] = useContext(SectionContext);
   const index = useContext(MeilisearchContext);
   const [value, setValue] = useState(search_query);
@@ -53,7 +53,7 @@ export default function SearchbarInstant({ disableList, search_query = "", small
   const calcListBottomLength = () => {
     if (!focused) return undefined;
 
-    var pixels = 10;
+    var pixels = 5;
 
     if (!disableList) {
       pixels += 49 * results.length;
@@ -66,12 +66,12 @@ export default function SearchbarInstant({ disableList, search_query = "", small
 
   const focus = () => {
     setFocused(true);
-    window.addEventListener('keydown', onEnter)
+    inputElement.current.addEventListener('keydown', onEnter)
   }
 
   const blur = () => {
     setFocused(false)
-    window.removeEventListener('keydown', onEnter)
+    inputElement.current.removeEventListener('keydown', onEnter)
   }
 
   const onEnter = event => {

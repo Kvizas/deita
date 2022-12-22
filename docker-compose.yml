@@ -14,15 +14,16 @@ services:
     working_dir: /tika/
     volumes:
       - ./tika/:/tika/
-  gatsby:
-    image: gatsbyjs/gatsby
-    ports:
-      - 80:80
-    working_dir: /pub/
-    volumes:
-      - ./deita-gatsby/public/:/pub/
+  # gatsby:
+  #   image: gatsbyjs/gatsby
+  #   ports:
+  #     - 80:80
+  #   working_dir: /pub/
+  #   volumes:
+  #     - ./deita-gatsby/public/:/pub/
   mariadb:
     image: mariadb
+    restart: unless-stopped
     ports:
       - 3307:3306
     volumes:
@@ -31,7 +32,7 @@ services:
       - docker.env
   strapi:
     build: ./deita-strapi/
-    image: deita:latest
+    image: deitastrapi:latest
     restart: unless-stopped
     env_file: ./deita-strapi/.env
     volumes:

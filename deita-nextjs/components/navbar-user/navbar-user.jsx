@@ -37,7 +37,6 @@ export default function NavbarUser() {
             </>
         )
     else {
-        console.log(user);
         return (
             <div>
                 Loading

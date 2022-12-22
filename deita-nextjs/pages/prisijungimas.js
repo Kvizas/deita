@@ -11,10 +11,11 @@ import { useRef } from 'react';
 
 export default function Prisijungimas() {
 
+    const { login } = useContext(UserContext);
+
     const emailRef = useRef();
     const passwordRef = useRef();
 
-    const { login } = useContext(UserContext);
 
     const submit = () => {
 

@@ -1,7 +1,6 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { useEffect } from "react";
 import { useState } from "react";
-import { httpGet, httpPost } from "../../functions/requests";
 import { getAuthToken, setAuthToken } from "../../helpers/auth-helper";
 import { useMutation, useLazyQuery , gql } from '@apollo/client';
 
@@ -10,7 +9,7 @@ export const UserContext = React.createContext();
 
 export default function UserContextProvider({ children }) {
 
-    const [user, setUser] = useState(null);
+    const [user, setUser] = useState();
     const [isLoading, setIsLoading] = useState(true);
 
     const LOGIN_MUTATION = gql`
@@ -57,7 +56,8 @@ export default function UserContextProvider({ children }) {
             setAuthToken(data.login.jwt)
             setUser(prev => {
                 setIsLoading(false);
-                return data.user
+                console.log(data);
+                return data.login.user
             })
         },
         onError: (error) => {
@@ -72,33 +72,33 @@ export default function UserContextProvider({ children }) {
                 return data.me
             })
             
+            console.log('--start--')
             console.log(data)
+            console.log('--end--')
         },
         onError: (error) => {
-            setUser(undefined);
             setIsLoading(false);
+            console.log('--err--')
             console.log(error);
+            console.log('--err_end--')
         }
     });
 
-    const update = () => {
+    const update = useCallback(() => {
 
+        const auth_token = getAuthToken();
+        if (auth_token === undefined) return;
+        
         setIsLoading(true);
 
         getMe();
 
         // TODO: If wrong auth token, disconnect
-    }
+    }, [getMe])
 
 
 
-    useEffect(() => {
-        const auth_token = getAuthToken();
-
-        if (auth_token === undefined) return;
-        
-        update()
-    }, [setUser, setIsLoading])
+    useEffect(update, [update])
 
 
 

@@ -53,7 +53,7 @@ export default function SearchbarInstant({ disableList, search_query = "", small
   const calcListBottomLength = () => {
     if (!focused) return undefined;
 
-    var pixels = 5;
+    var pixels = 10;
 
     if (!disableList) {
       pixels += 49 * results.length;

@@ -96,7 +96,7 @@ export default function SearchbarInstant({ disableList, search_query = "", small
   }
 
   const getListClass = () => {
-    return sass.searchbar__list + (focused ? ' active' : '')
+    return sass.searchbar__list + (focused ? ' ' + sass.searchbar__list__active : '');
   }
 
   return (

@@ -3,6 +3,7 @@ version: "3.7"
 services:
   meilisearch:
     image: getmeili/meilisearch:v0.28
+    restart: unless-stopped
     ports:
       - 7700:7700
     volumes:
@@ -21,28 +22,37 @@ services:
   #   working_dir: /pub/
   #   volumes:
   #     - ./deita-gatsby/public/:/pub/
-  mariadb:
-    image: mariadb
+  # mariadb:
+  #   image: mariadb
+  #   restart: unless-stopped
+  #   ports:
+  #     - 3307:3306
+  #   volumes:
+  #     - ./mariadb/data/:/var/lib/mysql
+  #   env_file:
+  #     - docker.env
+  # strapi:
+  #   build: ./deita-strapi/
+  #   image: deitastrapi:latest
+  #   restart: unless-stopped
+  #   env_file: ./deita-strapi/.env
+  #   volumes:
+  #     - ./deita-strapi/config:/opt/app/config
+  #     - ./deita-strapi/src:/opt/app/src
+  #     - ./deita-strapi/package.json:/opt/package.json
+  #     - ./deita-strapi/yarn.lock:/opt/yarn.lock
+  #     - ./deita-strapi/.env:/opt/app/.env
+  #     - ./deita-strapi/public/uploads:/opt/app/public/uploads
+  #   ports:
+  #     - '1337:1337'
+  #   depends_on:
+  #     - mariadb
+  pocketbase:
+    image: pocketbase
     restart: unless-stopped
-    ports:
-      - 3307:3306
+    working_dir: /pocketbase/
     volumes:
-      - ./mariadb/data/:/var/lib/mysql
-    env_file:
-      - docker.env
-  strapi:
-    build: ./deita-strapi/
-    image: deitastrapi:latest
-    restart: unless-stopped
-    env_file: ./deita-strapi/.env
-    volumes:
-      - ./deita-strapi/config:/opt/app/config
-      - ./deita-strapi/src:/opt/app/src
-      - ./deita-strapi/package.json:/opt/package.json
-      - ./deita-strapi/yarn.lock:/opt/yarn.lock
-      - ./deita-strapi/.env:/opt/app/.env
-      - ./deita-strapi/public/uploads:/opt/app/public/uploads
+      - ./deita-pb/pb_data/:/pocketbase/pb_data/
+      - ./deita-pb/pb_migrations/:/pocketbase/pb_migrations/
     ports:
-      - '1337:1337'
-    depends_on:
-      - mariadb
+      - 8090:8090

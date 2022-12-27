@@ -1,0 +1,48 @@
+@use "../../sass/abstracts/_placeholders"
+@use "../../sass/abstracts/_variables.module" as *
+
+.recom
+    width: unset
+    padding: unset
+    background: white
+    z-index: 2
+
+    h2
+        text-align: center
+
+    &__container
+        @extend %flex-center
+        width: min(1400px, 95vw)
+        position: relative
+        background: white
+        padding: min(50px, 5vw) 7vw
+        box-sizing: border-box
+        margin: auto
+
+        @media (max-width: 950px)
+            padding: min(50px, 5vw) 0
+            width: 100vw
+
+    &__side
+        position: absolute
+        top: 0
+        bottom: 0
+        margin: auto
+
+        &__wrapper
+            width: 100%
+            background-size: cover!important
+
+        &__left
+            left: 0
+            transform: translateX(-70%)
+
+        &__right
+            right: 0
+            transform: translateX(70%)
+
+    &__img
+        position: absolute!important
+        right: 0
+        bottom: 0
+        transform: translateX(45%) translateY(20%)

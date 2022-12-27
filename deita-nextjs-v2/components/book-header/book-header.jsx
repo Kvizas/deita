@@ -3,15 +3,17 @@ import sass from "./book-header.module.sass"
 import ArrowSVG from "../../images/arrow-shy-left.svg"
 import accessibleOnClick from "../../functions/accessibility"
 import Heading from "../heading/heading";
-import Image from "next/image";
+import {useRouter} from "next/router";
 
 import pb from "../../helpers/pocketbase"; 
 
 
 export default function BookHeader({ data }) {
 
+    const router = useRouter();
+
     const goBack = () => {
-        navigate('/paieska')
+        router.push('/paieska');
     }
 
     return (

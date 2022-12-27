@@ -2,8 +2,11 @@ import React, { useState } from 'react'
 import { useContext } from 'react'
 import { UserContext } from '../../contexts/user-context/user-context';
 import accessibleOnClick from '../../functions/accessibility';
+import useComponentVisible from "../../helpers/use-component-visible";
 import ArrowTriangleSVG from "../../images/arrow-triangle.svg";
 import Button from "../button/button";
+import ContextMenu from '../context-menu/context-menu';
+import ContextMenuItem from '../context-menu/context-menu-item';
 
 import sass from "./navbar-user.module.sass";
 import Image from 'next/image';
@@ -14,12 +17,16 @@ import pb from "../../helpers/pocketbase";
 export default function NavbarUser() {
 
     const {user, isLoading, logout} = useContext(UserContext);
-    const [isContextOpen, setIsContextOpen] = useState(false);
+    const {
+        ref: contextMenuRef, 
+        isComponentVisible: isContextMenuVisible, 
+        setIsComponentVisible: setContextMenuVisible
+    } = useComponentVisible(false);
 
     const router = useRouter();
 
     const openContextMenu = () => {
-        setIsContextOpen(!isContextOpen);
+        setContextMenuVisible(prev => !prev);
     };
 
     if (user !== undefined && isLoading === false)
@@ -30,14 +37,14 @@ export default function NavbarUser() {
                     <div className='subtext'>Vartotojas</div>
                     <div {...accessibleOnClick(openContextMenu)} style={{cursor: "pointer"}}>
                         {user.username}
-                        <Image className={sass.navbarUser__arrow + (isContextOpen ? ' ' + sass.navbarUser__arrow__open : '')} src={ArrowTriangleSVG} alt=""/>
+                        <Image className={sass.navbarUser__arrow + (isContextMenuVisible ? ' ' + sass.navbarUser__arrow__open : '')} src={ArrowTriangleSVG} alt=""/>
                     </div>
-                    {isContextOpen ? 
-                        <div className={sass.navbarUser__contextMenu}>
-                            <div className={sass.navbarUser__contextMenu__btn} {...accessibleOnClick(logout)}>
-                                Atsijungti
-                            </div>
-                        </div>
+                    {isContextMenuVisible ? 
+                        <ContextMenu outsideRef={contextMenuRef}>
+                            <ContextMenuItem action={() => router.push("/profilis")}>Profilis</ContextMenuItem>
+                            <ContextMenuItem>Eurų papildymas</ContextMenuItem>
+                            <ContextMenuItem action={logout}>Atsijungti</ContextMenuItem>
+                        </ContextMenu>
                         :
                         <></>
                     }

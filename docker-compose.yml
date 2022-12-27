@@ -48,6 +48,7 @@ services:
   #   depends_on:
   #     - mariadb
   pocketbase:
+    build: ./deita-pb/
     image: pocketbase
     restart: unless-stopped
     working_dir: /pocketbase/

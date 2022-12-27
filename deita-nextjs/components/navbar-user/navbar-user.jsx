@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useContext } from 'react'
 import { UserContext } from '../../contexts/user-context/user-context';
 import accessibleOnClick from '../../functions/accessibility';
-import Button from '../button/button';
 import ArrowTriangleSVG from "../../images/arrow-triangle.svg";
+import Button from "../button/button";
 
 import sass from "./navbar-user.module.sass";
 import Image from 'next/image';
@@ -12,9 +12,14 @@ import { useRouter } from 'next/router';
 
 export default function NavbarUser() {
 
-    const {user, isLoading} = useContext(UserContext);
+    const {user, isLoading, logout} = useContext(UserContext);
+    const [isContextOpen, setIsContextOpen] = useState(false);
 
     const router = useRouter();
+
+    const openContextMenu = () => {
+        setIsContextOpen(!isContextOpen);
+    };
 
     if (user !== undefined && isLoading === false)
         return (
@@ -22,10 +27,19 @@ export default function NavbarUser() {
                 <div className={sass.navbarUser__img}></div>
                 <div className='flex--align-center'>
                     <div className='subtext'>Vartotojas</div>
-                    <div>
+                    <div {...accessibleOnClick(openContextMenu)} style={{cursor: "pointer"}}>
                         {user.username}
-                        <Image className={sass.navbarUser__arrow} src={ArrowTriangleSVG} alt=""/>
+                        <Image className={sass.navbarUser__arrow + (isContextOpen ? ' ' + sass.navbarUser__arrow__open : '')} src={ArrowTriangleSVG} alt=""/>
                     </div>
+                    {isContextOpen ? 
+                        <div className={sass.navbarUser__contextMenu}>
+                            <div className={sass.navbarUser__contextMenu__btn} {...accessibleOnClick(logout)}>
+                                Atsijungti
+                            </div>
+                        </div>
+                        :
+                        <></>
+                    }
                 </div>
             </div>
         )

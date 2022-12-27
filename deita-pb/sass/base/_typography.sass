@@ -1,0 +1,63 @@
+@use "../abstracts/_variables.module" as *
+
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;700&display=swap')
+
+:root
+    font-family: Lexend
+
+*::selection
+    background: transparentize($primary-color, .85)
+
+a
+    color: $primary-color
+    text-underline-offset: 2px
+
+h1, h2, h3, h4, h5, h6
+    margin: 2rem 0
+
+h1, .hstyle-h1
+    font-size: 4rem
+    line-height: 4rem
+
+    @media (max-width: 880px)
+        line-height: 3.25rem
+        font-size: 3.25rem
+
+    @media (max-width: 420px)
+        line-height: 2.8rem
+        font-size: 2.8rem
+
+h2, .hstyle-h2
+    font-size: 3rem
+
+    @media (max-width: 880px)
+        line-height: 2.5rem
+        font-size: 2.5rem
+
+h3, .hstyle-h3
+    font-size: 2.25rem
+
+h4, .hstyle-h4
+    font-size: 1.5625rem
+
+h5, .hstyle-h5
+    font-size: 1.25rem
+
+p
+    color: $secondary-text-color
+
+.subtext
+    color: $secondary-text-color
+    font-size: .625rem
+
+.primary
+    color: $primary-color
+
+.secondary-text-color
+    color: $secondary-text-color
+
+.bold
+    font-weight: 700
+
+.semi-bold
+    font-weight: 600

@@ -1,7 +1,7 @@
 import React, { useCallback } from "react";
 import { useEffect } from "react";
 import { useState } from "react";
-import { getAuthToken, setAuthToken } from "../../helpers/auth-helper";
+import { getAuthToken, setAuthToken, removeToken } from "../../helpers/auth-helper";
 import { useMutation, useLazyQuery , gql } from '@apollo/client';
 
 export const UserContext = React.createContext();
@@ -106,6 +106,12 @@ export default function UserContextProvider({ children }) {
         loginMutation({ variables: { identifier: identifier, password: password } });
     }
 
+    const logout = () => {
+        setIsLoading(false);
+        setUser(undefined);
+        removeToken();
+    }
+
 
     const register = () => {
 
@@ -114,7 +120,7 @@ export default function UserContextProvider({ children }) {
     }
 
     return (
-        <UserContext.Provider value={{user, isLoading, update, login, register}}>
+        <UserContext.Provider value={{user, isLoading, update, login, register, logout}}>
             {children}
         </UserContext.Provider>
     )

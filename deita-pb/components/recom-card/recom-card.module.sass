@@ -1,0 +1,51 @@
+@use "../../sass/abstracts/_placeholders"
+@use "../../sass/abstracts/_variables.module" as *
+
+.recomCard
+    @extend %card
+    display: flex
+    justify-content: space-between
+    width: 320px
+    height: 200px
+    margin: 15px
+    user-select: none
+    cursor: pointer
+    transition: box-shadow .2s, transform .2s
+
+    &:hover
+        box-shadow: 0px 1px 30px rgba(0, 0, 0, 0.05)
+        transform: translateY(-2%)
+
+    &__icon
+        width: 16.5%
+
+        img
+            width: 100%
+
+    &__content
+        width: 73%
+
+    h5
+        margin-bottom: .5rem
+        margin-top: 0
+        font-weight: 400
+        line-height: 1.5ex
+
+    &__subtitle
+        color: $secondary-text-color
+        line-height: 2.75ex
+        height: 85px
+        margin: 0
+
+    &__amount
+        margin-top: .3vh
+        color: black
+
+        &__rect
+            @extend %flex-center
+            display: inline-flex
+            background: $secondary-color
+            border-radius: 7px
+            width: 55px
+            height: 35px
+            margin-right: 11px

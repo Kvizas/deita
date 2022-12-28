@@ -31,8 +31,8 @@ export default function Book() {
       <Navbar />
       {activeBook != undefined ? 
         <>
-          <BookHeader data={activeBook} />
-          {/*<BookBrowser data={activeBook} />*/}
+          <BookHeader book={activeBook} />
+          <BookBrowser book={activeBook} />
         </>
         :
         <></>

@@ -1,52 +1,86 @@
-import React from 'react'
+import React, { useState, useEffect} from 'react';
 
-import sass from "./book-browser.module.sass"
+import { MathJax } from 'better-react-mathjax';
+import accessibleOnClick from "../../functions/accessibility";
 
-import ButtonSelect from '../button-select/button-select'
-import { useState } from 'react'
-import { useEffect } from 'react'
+import sass from "./book-browser.module.sass";
+import pb from "../../helpers/pocketbase"; 
 
-export default function BookBrowser({ data }) {
 
-    const chapters = data.Sprendimai.map(ex => ex.Skyrius)
-    const [activeChapter, setActiveChapter] = useState(chapters[0])
+export default function BookBrowser({ book }) {
 
-    const getChapterExercises = chapter => {
-        return data.Sprendimai.filter(ex => ex.Skyrius === chapter)
-    }
-
-    const [chapterExercises, setChapterExercises] = useState(
-        getChapterExercises(chapters[0]).map(ex => ex.Pavadinimas)
-    )
-    const [activeExercise, setActiveExercise] = useState()
+    const [bookSections, setBookSections] = useState([]);
+    const [selectedSection, setSelectedSection] = useState(undefined);
+    const [sectionExercises, setSectionExercices] = useState([]);
+    const [selectedExercise, setSelectedExercise] = useState(undefined);
 
     useEffect(() => {
+        pb.collection('bookSections').getFullList(200, {
+            sort: '+title',
+            filter: `book = "${book.id}"`
+        }).then(data => {
+            setBookSections(data);
+        }).catch(e => {
+            console.error(e);
+        });
+    }, []);
 
-        const exercises = getChapterExercises(activeChapter)
-
-        setChapterExercises( exercises.map(ex => ex.Pavadinimas) )
-        setActiveExercise( exercises[0].Pavadinimas )
-
-    }, [activeChapter])
+    useEffect(() => {
+        if (!selectedSection) return;
+        pb.collection('exercises').getFullList(200, {
+            sort: '+title',
+            filter: `section = "${selectedSection.id}"`
+        }).then(data => {
+            setSectionExercices(data);
+            console.log(data);
+        }).catch(e => {
+            console.error(e);
+        });
+        setSelectedExercise(undefined);
+    }, [selectedSection])
 
     return (
         <section className='flex'>
-            <div className={sass.bookBrowser__side}>
-                <ButtonSelect
-                    options={chapters}
-                    active={activeChapter}
-                    setActiveCb={setActiveChapter}
-                    style={{width: '100%'}}
-                />
-            </div>
-            <div className={sass.bookBrowser__content}>
-                <ButtonSelect
-                    options={chapterExercises}
-                    active={activeExercise}
-                    setActiveCb={setActiveExercise}
-                    wrapperClassName={sass.bookBrowser__exBav}
-                />
-            </div>
+            {bookSections && bookSections.length > 0 ? 
+                <>
+                    <div className={sass.bookBrowser__sections}>
+                        {bookSections.map(section => (
+                            <div 
+                                key={section.id}
+                                {...accessibleOnClick(() => setSelectedSection(section))}
+                                className={sass.bookBrowser__sections__section + " " + (selectedSection && section.id == selectedSection.id ? sass.bookBrowser__sections__section__active : "")}
+
+                            >
+                                {section.title}
+                            </div>
+                        ))}
+                    </div>
+                    <div className={sass.bookBrowser__exercises}>
+                        <div className={sass.bookBrowser__exercises__selector}>
+                            {sectionExercises.map(exercise => (
+                                <div 
+                                    key={exercise.id}
+                                    {...accessibleOnClick(() => setSelectedExercise(exercise))}
+                                    className={sass.bookBrowser__exercises__selector__selection + " " + (selectedExercise && exercise.id == selectedExercise.id ? sass.bookBrowser__exercises__selector__selection__active : "")}
+
+                                >
+                                    {exercise.title}
+                                </div>
+                            ))}
+                        </div>
+                        {selectedExercise ? 
+                            <div className={sass.bookBrowser__exercises__solution}>
+                                <MathJax dynamic>{selectedExercise.solution}</MathJax>
+                            </div>
+                            :
+                            <></>
+                        }
+                        
+                    </div>
+                </>
+                :
+                <div>Deja, šis turinys prieinamas tik Premium nariams.</div>
+            }
         </section>
     )
 }

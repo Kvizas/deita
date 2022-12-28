@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@next/font": "13.0.7",
+    "better-react-mathjax": "^2.0.2",
     "eslint": "8.30.0",
     "eslint-config-next": "13.0.7",
     "meilisearch": "^0.30.0",

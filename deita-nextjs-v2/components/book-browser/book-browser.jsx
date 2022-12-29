@@ -1,6 +1,7 @@
 import React, { useState, useEffect} from 'react';
 
-import { MathJax } from 'better-react-mathjax';
+import 'katex/dist/katex.min.css';
+import Latex from 'react-latex-next';
 import accessibleOnClick from "../../functions/accessibility";
 
 import sass from "./book-browser.module.sass";
@@ -70,7 +71,7 @@ export default function BookBrowser({ book }) {
                         </div>
                         {selectedExercise ? 
                             <div className={sass.bookBrowser__exercises__solution}>
-                                <MathJax dynamic>{selectedExercise.solution}</MathJax>
+                                <Latex>{selectedExercise.solution}</Latex>
                             </div>
                             :
                             <></>

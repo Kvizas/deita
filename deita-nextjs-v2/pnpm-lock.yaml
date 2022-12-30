@@ -9,7 +9,6 @@ specifiers:
   pocketbase: ^0.9.0
   react: 18.2.0
   react-dom: 18.2.0
-  react-latex: ^2.0.0
   react-latex-next: ^2.2.0
   sass: ^1.57.1
 
@@ -22,7 +21,6 @@ dependencies:
   pocketbase: 0.9.1
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
-  react-latex: 2.0.0
   react-latex-next: 2.2.0_biqbaboplfbrettd7655fr4n2y
 
 devDependencies:
@@ -505,10 +503,6 @@ packages:
 
   /color-name/1.1.4:
     resolution: {integrity: sha512-dOy+3AuW3a2wNbZHIuMZpTcgjGuLU/uBL/ubcZF9OXbDo8ff4O8yVp5Bf0efS8uEoYo5q4Fx7dY9OgQGXgAsQA==}
-    dev: false
-
-  /commander/2.20.3:
-    resolution: {integrity: sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ==}
     dev: false
 
   /commander/8.3.0:
@@ -1390,13 +1384,6 @@ packages:
       object.assign: 4.1.4
     dev: false
 
-  /katex/0.10.2:
-    resolution: {integrity: sha512-cQOmyIRoMloCoSIOZ1+gEwsksdJZ1EW4SWm3QzxSza/QsnZr6D4U1V9S4q+B/OLm2OQ8TCBecQ8MaIfnScI7cw==}
-    hasBin: true
-    dependencies:
-      commander: 2.20.3
-    dev: false
-
   /katex/0.13.24:
     resolution: {integrity: sha512-jZxYuKCma3VS5UuxOx/rFV1QyGSl3Uy/i0kTJF3HgQ5xMinCQVF8Zd4bMY/9aI9b9A2pjIBOsjSSm68ykTAr8w==}
     hasBin: true
@@ -1759,12 +1746,6 @@ packages:
       katex: 0.13.24
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
-    dev: false
-
-  /react-latex/2.0.0:
-    resolution: {integrity: sha512-x17uDCfqBgR+5ZF/zplRCuHdEbX22CJlVipOqMUinRMoiOwh5fr3jbjD4zqVQ8pIs4AnF0BWPDR2S7Fyd8Snxw==}
-    dependencies:
-      katex: 0.10.2
     dev: false
 
   /react/18.2.0:

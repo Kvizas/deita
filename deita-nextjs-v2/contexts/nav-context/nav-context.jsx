@@ -14,7 +14,7 @@ export const NavContext = React.createContext(
           // },
           {
             title: "Sprendimai",
-            url: "/solutions",
+            url: "/knygos",
             icon: SolutionsSVG
           },
           {

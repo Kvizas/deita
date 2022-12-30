@@ -41,7 +41,7 @@ export default function BookBrowser({ book }) {
     }, [selectedSection])
 
     return (
-        <section className='flex'>
+        <section className='flex' style={{gap: "25px"}}>
             {bookSections && bookSections.length > 0 ? 
                 <>
                     <div className={sass.bookBrowser__sections}>

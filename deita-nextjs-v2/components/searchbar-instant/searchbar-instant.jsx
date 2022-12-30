@@ -14,7 +14,6 @@ import { useContext } from 'react';
 import { SectionContext } from '../contextual-section/contextual-section';
 import { MeilisearchContext } from '../../contexts/meilisearch-context/meilisearch-context';
 import { useEffect } from 'react';
-import accessibleOnClick from '../../functions/accessibility';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 
@@ -129,7 +128,7 @@ export default function SearchbarInstant({ disableList, search_query = "", small
           ref={inputElement}
       />
       <Image className={sass.searchbar__icon} src={SearchSvg} alt='Paieška'/>
-      <Button className={sass.searchbar__btn} onClick={onSearchBtn}>Ieškoti</Button>
+      <Button className={sass.searchbar__btn + ' margin--0'} onClick={onSearchBtn}>Ieškoti</Button>
     </div>
     </>
   )

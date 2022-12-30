@@ -11,16 +11,12 @@ export default function BookHeader({ book }) {
 
     const router = useRouter();
 
-    const goBack = () => {
-        router.push('/paieska');
-    }
-
     return (
         <section className='flex'>
             <div className={sass.bookHeader__img} style={{backgroundImage: `url(${pb.getFileUrl(book, book.image)})`}}></div>
             <div className='flex flex--align-center' style={{flexDirection: "column"}}>
                 <Heading style={{maxWidth: "850px", margin: "5px", lineHeight: "1.1"}} styleLevel={3} level={1}>{book.title}</Heading>
-                <div {...accessibleOnClick(goBack)} className='secondary-text-color pointer'><img src={ArrowSVG} alt=""/> Grįžti į knygos sprendimų sąvadą</div>
+                <div {...accessibleOnClick(router.back)} className='secondary-text-color pointer'><img src={ArrowSVG} alt=""/> Grįžti į knygų sprendimų sąvadą</div>
             </div>
         </section>
     )

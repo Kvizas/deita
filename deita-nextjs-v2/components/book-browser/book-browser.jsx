@@ -2,7 +2,10 @@ import React, { useState, useEffect} from 'react';
 
 import 'katex/dist/katex.min.css';
 import Latex from 'react-latex-next';
+
 import accessibleOnClick from "../../functions/accessibility";
+
+import Heading from "../heading/heading";
 
 import sass from "./book-browser.module.sass";
 import pb from "../../helpers/pocketbase"; 
@@ -41,10 +44,11 @@ export default function BookBrowser({ book }) {
     }, [selectedSection])
 
     return (
-        <section className='flex' style={{gap: "25px"}}>
+        <section className={sass.bookBrowser}>
             {bookSections && bookSections.length > 0 ? 
                 <>
                     <div className={sass.bookBrowser__sections}>
+                    <Heading style={{fontWeight: "500"}} styleLevel={4} level={5}>Turinys</Heading>
                         {bookSections.map(section => (
                             <div 
                                 key={section.id}
@@ -56,28 +60,32 @@ export default function BookBrowser({ book }) {
                             </div>
                         ))}
                     </div>
-                    <div className={sass.bookBrowser__exercises}>
-                        <div className={sass.bookBrowser__exercises__selector}>
-                            {sectionExercises.map(exercise => (
-                                <div 
-                                    key={exercise.id}
-                                    {...accessibleOnClick(() => setSelectedExercise(exercise))}
-                                    className={sass.bookBrowser__exercises__selector__selection + " " + (selectedExercise && exercise.id == selectedExercise.id ? sass.bookBrowser__exercises__selector__selection__active : "")}
+                    {selectedSection ? 
+                        <div className={sass.bookBrowser__exercises}>
+                            <Heading style={{fontWeight: "500"}} styleLevel={4} level={5}>Užduotys</Heading>
+                            <div className={sass.bookBrowser__exercises__selector}>
+                                {sectionExercises.map(exercise => (
+                                    <div 
+                                        key={exercise.id}
+                                        {...accessibleOnClick(() => setSelectedExercise(exercise))}
+                                        className={sass.bookBrowser__exercises__selector__selection + " " + (selectedExercise && exercise.id == selectedExercise.id ? sass.bookBrowser__exercises__selector__selection__active : "")}
 
-                                >
-                                    {exercise.title}
-                                </div>
-                            ))}
-                        </div>
-                        {selectedExercise ? 
-                            <div className={sass.bookBrowser__exercises__solution}>
-                                <Latex>{selectedExercise.solution}</Latex>
+                                    >
+                                        {exercise.title}
+                                    </div>
+                                ))}
                             </div>
-                            :
-                            <></>
-                        }
-                        
-                    </div>
+                            {selectedExercise ? 
+                                <div className={sass.bookBrowser__exercises__solution}>
+                                    <Latex>{selectedExercise.solution}</Latex>
+                                </div>
+                                :
+                                <></>
+                            }
+                            
+                        </div>
+                        : <></>
+                    }
                 </>
                 :
                 <div>Deja, šis turinys prieinamas tik Premium nariams.</div>

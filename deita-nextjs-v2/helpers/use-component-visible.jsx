@@ -3,9 +3,10 @@ import { useState, useEffect, useRef } from "react";
 export default function useComponentVisible() {
   const [isComponentVisible, setIsComponentVisible] = useState(false);
   const ref = useRef(null);
+  const openRef = useRef(null);
 
   const handleClickOutside = (event) => {
-    if (ref.current && !ref.current.contains(event.target)) {
+    if (ref.current && !ref.current.contains(event.target) && openRef.current && !openRef.current.contains(event.target)) {
       setIsComponentVisible(false);
     }
   };
@@ -22,5 +23,5 @@ export default function useComponentVisible() {
     };
   });
 
-  return { ref, isComponentVisible, setIsComponentVisible };
+  return { ref, openRef, isComponentVisible, setIsComponentVisible };
 }

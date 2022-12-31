@@ -2,27 +2,38 @@
 @use "../../sass/abstracts/_variables.module" as *
 
 .contextMenu
-    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.12)
-    border-radius: 10px
+    border: 1px solid #E4E4E4
+    border-radius: 6px
     box-sizing: border-box
     position: absolute
     margin-top: 10px
-    width: 150px
+    width: 274px
     display: flex
     justify-content: center
     flex-direction: column
+    padding: 6px
+
+    &__spacer
+        position: relative
+        height: 1px
+        right: 6px
+        width: calc(100% + 12px)
+        background: #E4E4E4
+        margin-top: 6px
+        margin-bottom: 6px
 
     &__item
         box-sizing: border-box
+        height: 38px
         width: 100%
-        padding: 5px 20px
         transition: all 0.3s
+        display: flex
+        align-items: center
+        border-radius: 9px
+        padding-left: 15px
+
+        &__image
+            margin-right: 10px
 
     &__item:hover
-        background: #7c818421
-
-    &__item:first-child
-        border-radius: 10px 10px 0 0
-
-    &__item:last-child
-        border-radius: 0 0 10px 10px
+        background: rgba(63, 177, 181, 0.15)

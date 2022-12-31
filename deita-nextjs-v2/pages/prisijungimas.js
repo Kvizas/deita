@@ -16,21 +16,15 @@ import Spacer from '../components/spacer/spacer';
 import Input from '../components/input/input';
 import Form from '../components/form/form';
 import Checkbox from '../components/checkbox/checkbox';
+import Link from 'next/link';
+import ButtonSubmit from '../components/button-submit/button-submit';
 
 export default function Prisijungimas() {
 
     const { login } = useContext(UserContext);
 
-    const emailRef = useRef();
-    const passwordRef = useRef();
-
-
-    const submit = () => {
-
-        const email = emailRef.current.value;
-        const password = passwordRef.current.value;
-
-        login(email, password);
+    const submit = fields => {
+        login(fields.email, fields.password);
     }
 
     return (
@@ -43,13 +37,13 @@ export default function Prisijungimas() {
 
                     <Button transparent={true} onClick={submit}>
                         <div className='flex flex--align-center flex--justify-center' style={{ gap: ".75em" }}>
-                            <Image src={GoogleSVG} /> Prisijungti su Google
+                            <Image src={GoogleSVG} alt="Google" /> Prisijungti su Google
                         </div>
                     </Button>
 
                     <Button transparent={true} onClick={submit}>
                         <div className='flex flex--align-center flex--justify-center' style={{ gap: ".75em" }}>
-                            <Image src={FacebookSVG} /> Prisijungti su Facebook
+                            <Image src={FacebookSVG} alt="Facebook" /> Prisijungti su Facebook
                         </div>
                     </Button>
 
@@ -58,12 +52,15 @@ export default function Prisijungimas() {
                     <Heading level={2} styleLevel={5}>Prisijungti su el. paštu</Heading>
 
                     <Form>
-                        <Input label={"El. paštas"} placeholder={"vardas@gmail.com"} type="email" />
-                        <Input label={"Slaptažodis"} placeholder={"••••••••••••"} type="password" />
-                        <Checkbox>Prisiminti mane</Checkbox>
+                        <Input id={"email"} label={"El. paštas"} placeholder={"vardas@gmail.com"} type="email" />
+                        <Input id={"password"} label={"Slaptažodis"} placeholder={"••••••••••••"} type="password" />
+                        <div className='flex flex--justify-space-between'>
+                            <Checkbox id={"rememberMe"}>Prisiminti mane</Checkbox>
+                            <Link style={{ margin: "14px 0", textDecoration: 'none' }} href={'slaptazodzio-atkurimas'}>Pamiršau slaptažodį</Link>
+                        </div>
+                        <ButtonSubmit style={{ width: "100%" }} onSubmit={submit}>Prisijungti</ButtonSubmit>
                     </Form>
 
-                    <Button onClick={submit}>Prisijungti</Button>
                 </AuthBox>
             </section>
             <Footer />

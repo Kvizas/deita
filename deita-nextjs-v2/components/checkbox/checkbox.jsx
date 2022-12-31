@@ -1,10 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-export default function Checkbox({ id, onChange, children }) {
+import sass from "./checkbox.module.sass"
+
+export default function Checkbox({ onChange, children, defaultValue = false }) {
+
+  const [checked, setChecked] = useState(defaultValue)
+
+  const onClick = () => {
+    
+  }
+
   return (
-    <>
-      <input onChange={e => onChange(e.target.checked)} id={id} type={"checkbox"}/>
-      <label htmlFor={id}>{children}</label>
-    </>
+    <div className={sass.checkbox__wrapper}>
+      <div onClick={onClick} className={sass.checkbox}></div>
+      <div>{children}</div>
+    </div>
   )
 }

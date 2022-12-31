@@ -1,6 +1,12 @@
 @use "../../sass/abstracts/_placeholders"
 
 .auth
-    &__img
-        @extend %flex-center
-        
+    width: min(330px, 95vw)
+    margin: auto
+    display: flex
+    flex-wrap: wrap
+    justify-content: center
+    text-align: center
+
+    & > *
+        width: 100%

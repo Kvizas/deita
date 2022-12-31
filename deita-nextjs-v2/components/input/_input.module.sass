@@ -1,15 +1,15 @@
 @use "../../sass/abstracts/_variables.module" as *
 
-input
-    border: none
-    box-shadow: 0 0 24px rgba(0, 0, 0, .07)
-    border-radius: 20px
+.input
+    width: 100%
+    border: 1px solid #E4E4E4
+    border-radius: 6px
     transition: box-shadow .25s
     font-family: Lexend
     text-overflow: ellipsis
     box-sizing: border-box
     font-size: 1rem
-    padding: 14px 22px
+    padding: 15px
 
     &:active, &:focus
         outline: none
@@ -17,3 +17,12 @@ input
 
     &::placeholder
         color: transparentize($secondary-text-color, .4)
+
+    &__label
+        display: block
+        text-align: left
+        font-weight: 500
+        margin: 6px 0
+
+    &__wrapper
+        margin: 14px 0

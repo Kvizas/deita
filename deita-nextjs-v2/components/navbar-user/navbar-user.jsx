@@ -62,7 +62,7 @@ export default function NavbarUser() {
         return (
             <div className='flex' style={{gap: "1em"}}>
                 <div className={sass.navbarUser__img} style={{backgroundImage: `url(${pb.getFileUrl(user, user.avatar, {'thumb': '32x32'})})`}}></div>
-                <div className='flex--align-center'>
+                <div className='flex--justify-center'>
                     <div className='subtext'>Vartotojas</div>
                     <div ref={openContextMenuRef} {...accessibleOnClick(openContextMenu)} style={{cursor: "pointer"}}>
                         {user.username}

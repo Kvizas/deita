@@ -30,7 +30,7 @@ export default function NavbarUser() {
         openRef: openContextMenuRef,
         isComponentVisible: isContextMenuVisible, 
         setIsComponentVisible: setContextMenuVisible
-    } = useComponentVisible(false);
+    } = useComponentVisible();
 
     const router = useRouter();
 
@@ -50,7 +50,7 @@ export default function NavbarUser() {
                     </div>
                     {isContextMenuVisible ? 
                         <ContextMenu outsideRef={contextMenuRef}>
-                            <ContextMenuItem icon={MyProfileSVG} action={() => router.push("/profilis")}>Mano Paskyra</ContextMenuItem>
+                            <ContextMenuItem icon={MyProfileSVG} href="profilis">Mano Paskyra</ContextMenuItem>
                             <ContextMenuItem icon={ContextSubscriptionsSVG}>Planai</ContextMenuItem>
                             <ContextMenuItem icon={AddBalanceSVG}>Pridėti lėšų</ContextMenuItem>
                             <ContextMenuSpacer></ContextMenuSpacer>

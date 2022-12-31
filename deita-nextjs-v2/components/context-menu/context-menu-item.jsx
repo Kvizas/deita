@@ -6,7 +6,7 @@ import accessibleOnClick from '../../functions/accessibility';
 import sass from "./context-menu.module.sass";
 import { useRouter } from 'next/router';
 
-export default function ContextMenuItem({spacer, href, action, icon, children}) {
+export default function ContextMenuItem({ href, action, icon, children}) {
 
   const router = useRouter();
 

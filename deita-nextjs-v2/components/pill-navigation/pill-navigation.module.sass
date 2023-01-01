@@ -1,0 +1,21 @@
+@use "../../sass/abstracts/_placeholders"
+@use "../../sass/abstracts/_variables.module" as *
+
+.pillNav
+    @extend %flex-center
+    width: fit-content
+    gap: 1em
+    border: 1px solid #E4E4E4
+    border-radius: 11px
+    padding: 7px
+
+    &__pill
+        padding: 13px 15px
+        border-radius: 6px
+        cursor: pointer
+        color: $secondary-text-color
+        transition: background .2s, color .2s
+
+        &--active
+            background: $primary-color
+            color: white

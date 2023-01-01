@@ -10,7 +10,7 @@ import FacebookSVG from "../images/facebook_colored.svg"
 
 import { useContext } from 'react';
 import { UserContext } from '../contexts/user-context/user-context';
-import { useRef } from 'react';
+
 import Image from 'next/image';
 import Spacer from '../components/spacer/spacer';
 import Input from '../components/input/input';

@@ -18,14 +18,19 @@ export const NavContext = React.createContext(
             icon: SolutionsSVG
           },
           {
-            title: "Prenumeratos",
-            url: "/pricing",
-            icon: PricingSVG
-          },
-          {
             title: "DeitaP2P",
             url: "/p2p",
             icon: DeitaP2PSVG
+          },
+          {
+            title: "VBE",
+            url: "/vbe",
+            icon: DeitaP2PSVG
+          },
+          {
+            title: "Prenumeratos",
+            url: "/prenumeratos",
+            icon: PricingSVG
           },
     ]
 );

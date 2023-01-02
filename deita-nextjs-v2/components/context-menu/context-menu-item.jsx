@@ -11,7 +11,7 @@ export default function ContextMenuItem({ href, action, icon, children}) {
   const router = useRouter();
 
   const onClick = () => {
-    action();
+    if (action) action();
     if (href) router.push(href);
   }
 

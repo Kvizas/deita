@@ -5,7 +5,7 @@ import SolutionsSVG from "../../images/solutions.svg"
 import PricingSVG from "../../images/pricing.svg"
 import DeitaP2PSVG from "../../images/deitap2p.svg"
 
-export const NavContext = React.createContext(
+export const NavContext = React.createContext( // TODO: Refactor into a js object
     [
           // {
           //   title: "Konspektai",

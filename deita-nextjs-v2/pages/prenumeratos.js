@@ -6,6 +6,7 @@ import Navbar from '../components/navbar/navbar'
 import Pill from '../components/pill-navigation/pill'
 import PillNavigation from '../components/pill-navigation/pill-navigation'
 import SelectionLine from '../components/pill-navigation/pill-navigation'
+import PlanSelection from '../components/subscription-selection/subscription-selection'
 
 export default function Prenumeratos() {
     return (
@@ -24,6 +25,10 @@ export default function Prenumeratos() {
                         <Pill>3 mėnesių planas</Pill>
                         <Pill>Mėnesinis planas</Pill>
                     </PillNavigation>
+
+                    <PlanSelection style={{ marginTop: "50px" }}>
+
+                    </PlanSelection>
                 </div>
             </ContextualSection>
             <Footer />
